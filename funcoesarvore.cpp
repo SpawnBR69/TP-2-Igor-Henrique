@@ -7,8 +7,8 @@ typedef struct date{
 }data;
 
 typedef struct address{
-    string district,city,state,cep,complement;
-    int numero;
+    string district,city,state,cep,complement,street;
+    int number;
 }endereco;
 
 typedef struct element{
@@ -156,5 +156,16 @@ void searchCPF(pointer *n, element *v){
         searchCPF(&(*n)->right,v);
     }else{
         *v = (*n)->value;
+    }
+}
+
+void printTree(pointer *n){
+    if((*n) != NULL){
+        printTree(&(*n)->left);
+        cout << "Nome: " << (*n)->value.name;
+        cout << "CPF: " << (*n)->value.cpf;
+        cout << "Cargo: " << (*n)->value.role;
+        cout << "Número de Telefone: " << (*n)->value.phonenumber;
+        printTree(&(*n)->right);
     }
 }
