@@ -15,5 +15,6 @@ void removeNodeName(pointer *n, element value);
 void removeNodeCPF(pointer *n, element value);
 void searchName(pointer *n, element *v);
 void searchCPF(pointer *n, element *v);
+void printElement(element value);
 
 #endif

@@ -37,6 +37,7 @@ int main() {
     pointer nameTree = NULL;
     element aux;
     while (choice != 5){
+        choice = 0;
         system("cls");
         menu();
         cout << "Digite o que deseja fazer: " << endl;
@@ -91,6 +92,7 @@ int main() {
                 cin >> aux.cpf;
                 searchCPF(&cpfTree,&aux);
                 printElement(aux);
+                system("pause");
                 break;
             case 2:
                 system("cls");
@@ -98,6 +100,7 @@ int main() {
                 cin >> aux.name;
                 searchName(&nameTree,&aux);
                 printElement(aux);
+                system("pause");
                 break;
             default:
                 break;
@@ -123,10 +126,12 @@ int main() {
             case 1:
                 system("cls");
                 printTree(&cpfTree);
+                system("pause");
                 break;
             case 2:
                 system("cls");
                 printTree(&nameTree);
+                system("pause");
                 break;
             default:
                 break;
