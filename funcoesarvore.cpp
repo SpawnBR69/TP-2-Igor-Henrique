@@ -162,10 +162,33 @@ void searchCPF(pointer *n, element *v){
 void printTree(pointer *n){
     if((*n) != NULL){
         printTree(&(*n)->left);
-        cout << "Nome: " << (*n)->value.name;
-        cout << "CPF: " << (*n)->value.cpf;
-        cout << "Cargo: " << (*n)->value.role;
-        cout << "Número de Telefone: " << (*n)->value.phonenumber;
+        cout << "Nome: " << (*n)->value.name << endl;
+        cout << "CPF: " << (*n)->value.cpf << endl;
+        cout << "Cargo: " << (*n)->value.role << endl;
+        cout << "Número de Telefone: " << (*n)->value.phonenumber << endl;
+        cout << "Data de Nascimento: " << (*n)->value.birth_date.day << "/" << (*n)->value.birth_date.month << "/" << (*n)->value.birth_date.year << endl;
+        cout << "Endereço: " << endl;
+        cout << "Rua " << (*n)->value.address.street << " n° " << (*n)->value.address.number << endl;
+        cout << "Bairro: " << (*n)->value.address.district << endl;
+        cout << "Logradouro: " << (*n)->value.address.complement << endl;
+        cout << "Cidade: " << (*n)->value.address.city << endl;
+        cout << "Estado; " << (*n)->value.address.state << endl;
+        cout << "CEP: " << (*n)->value.address.cep << endl;
         printTree(&(*n)->right);
     }
+}
+
+void printElement(element value){
+    cout << "Nome: " << value.name << endl;
+    cout << "CPF: " << value.cpf << endl;
+    cout << "Cargo: " << value.role << endl;
+    cout << "Número de Telefone: " << value.phonenumber << endl;
+    cout << "Data de Nascimento: " << value.birth_date.day << "/" << value.birth_date.month << "/" << value.birth_date.year << endl;
+    cout << "Endereço: " << endl;
+    cout << "Rua " << value.address.street << " n° " << value.address.number << endl;
+    cout << "Bairro: " << value.address.district << endl;
+    cout << "Logradouro: " << value.address.complement << endl;
+    cout << "Cidade: " << value.address.city << endl;
+    cout << "Estado; " << value.address.state << endl;
+    cout << "CEP: " << value.address.cep << endl;
 }
