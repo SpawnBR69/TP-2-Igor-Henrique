@@ -1,73 +1,93 @@
 #include <iostream>
- 
+
 using namespace std;
 
-typedef struct date{
-    int day,month,year;
-}data;
+typedef struct date
+{
+    int day, month, year;
+} data;
 
-typedef struct address{
-    string district,city,state,cep,complement,street;
+typedef struct address
+{
+    string district, city, state, cep, complement, street;
     int number;
-}endereco;
+} endereco;
 
-typedef struct element{
+typedef struct element
+{
     int value;
-    string cpf,name,role,phonenumber;
+    string cpf, name, role, phonenumber;
     date birth_date;
     address address;
-}element;
+} element;
 
-typedef struct node * pointer;
-typedef struct node{
+typedef struct node *pointer;
+typedef struct node
+{
     element value;
     pointer left;
     pointer right;
-}node;
+} node;
 
-void includeNodeName(pointer *n, element value){
-    if(*n == NULL){
+void includeNodeName(pointer *n, element value)
+{
+    if (*n == NULL)
+    {
         *n = new node;
         (*n)->value = value;
         (*n)->left = NULL;
         (*n)->right = NULL;
         return;
     }
-    if((*n)->value.name > value.name){
-        includeNodeName(&(*n)->left,value);
+    if ((*n)->value.name > value.name)
+    {
+        includeNodeName(&(*n)->left, value);
         return;
-    }if((*n)->value.name < value.name){
-        includeNodeName(&(*n)->right,value);
+    }
+    if ((*n)->value.name < value.name)
+    {
+        includeNodeName(&(*n)->right, value);
         return;
-    }else{
+    }
+    else
+    {
         cout << "REGISTRO JÁ CADASTRADO NA ARVORE";
         return;
     }
 }
 
-void includeNodeCPF(pointer *n, element value){
-    if(*n == NULL){
+void includeNodeCPF(pointer *n, element value)
+{
+    if (*n == NULL)
+    {
         *n = new node;
         (*n)->value = value;
         (*n)->left = NULL;
         (*n)->right = NULL;
         return;
     }
-    if((*n)->value.cpf > value.cpf){
-        includeNodeCPF(&(*n)->left,value);
+    if ((*n)->value.cpf > value.cpf)
+    {
+        includeNodeCPF(&(*n)->left, value);
         return;
-    }if((*n)->value.cpf < value.cpf){
-        includeNodeCPF(&(*n)->right,value);
+    }
+    if ((*n)->value.cpf < value.cpf)
+    {
+        includeNodeCPF(&(*n)->right, value);
         return;
-    }else{
+    }
+    else
+    {
         cout << "REGISTRO JÁ CADASTRADO NA ARVORE";
         return;
     }
 }
 
-void predecessor(pointer q, pointer *n){
-    if((*n)->right != NULL){
-        predecessor(q,&(*n)->right);
+void predecessor(pointer q, pointer *n)
+{
+    if ((*n)->right != NULL)
+    {
+        predecessor(q, &(*n)->right);
         return;
     }
     q = new node;
@@ -77,25 +97,34 @@ void predecessor(pointer q, pointer *n){
     delete q;
 }
 
-void removeNodeName(pointer *n, element value){
+void removeNodeName(pointer *n, element value)
+{
     pointer aux = new node;
-    if(*n == NULL){
+    if (*n == NULL)
+    {
         cout << "REGISTRO INEXISTENTE";
         return;
     }
-    if((*n)->value.name > value.name){
-        removeNodeName(&(*n)->left,value);
+    if ((*n)->value.name > value.name)
+    {
+        removeNodeName(&(*n)->left, value);
         return;
-    }if((*n)->value.name < value.name){
-        removeNodeName(&(*n)->right,value);
+    }
+    if ((*n)->value.name < value.name)
+    {
+        removeNodeName(&(*n)->right, value);
         return;
-    }if((*n)->right != NULL){
+    }
+    if ((*n)->right != NULL)
+    {
         aux = *n;
         *n = (*n)->left;
         delete aux;
         return;
-    }if((*n)->left != NULL){
-        predecessor(*n,&(*n)->left);
+    }
+    if ((*n)->left != NULL)
+    {
+        predecessor(*n, &(*n)->left);
         return;
     }
     aux = *n;
@@ -103,25 +132,34 @@ void removeNodeName(pointer *n, element value){
     delete aux;
 }
 
-void removeNodeCPF(pointer *n, element value){
+void removeNodeCPF(pointer *n, element value)
+{
     pointer aux = new node;
-    if(*n == NULL){
+    if (*n == NULL)
+    {
         cout << "REGISTRO INEXISTENTE";
         return;
     }
-    if((*n)->value.cpf > value.cpf){
-        removeNodeCPF(&(*n)->left,value);
+    if ((*n)->value.cpf > value.cpf)
+    {
+        removeNodeCPF(&(*n)->left, value);
         return;
-    }if((*n)->value.cpf < value.cpf){
-        removeNodeCPF(&(*n)->right,value);
+    }
+    if ((*n)->value.cpf < value.cpf)
+    {
+        removeNodeCPF(&(*n)->right, value);
         return;
-    }if((*n)->right != NULL){
+    }
+    if ((*n)->right != NULL)
+    {
         aux = *n;
         *n = (*n)->left;
         delete aux;
         return;
-    }if((*n)->left != NULL){
-        predecessor(*n,&(*n)->left);
+    }
+    if ((*n)->left != NULL)
+    {
+        predecessor(*n, &(*n)->left);
         return;
     }
     aux = *n;
@@ -129,38 +167,54 @@ void removeNodeCPF(pointer *n, element value){
     delete aux;
 }
 
-void searchName(pointer *n, element *v){
-    if(*n == NULL){
+void searchName(pointer *n, element *v)
+{
+    if (*n == NULL)
+    {
         cout << "REGISTRO INEXISTENTE";
         return;
     }
-    if(v->name < (*n)->value.name){
-        searchName(&(*n)->left,v);
+    if (v->name < (*n)->value.name)
+    {
+        searchName(&(*n)->left, v);
         return;
-    }if(v->name > (*n)->value.name){
-        searchName(&(*n)->right,v);
-    }else{
+    }
+    if (v->name > (*n)->value.name)
+    {
+        searchName(&(*n)->right, v);
+    }
+    else
+    {
         *v = (*n)->value;
     }
 }
 
-void searchCPF(pointer *n, element *v){
-    if(*n == NULL){
+void searchCPF(pointer *n, element *v)
+{
+    if (*n == NULL)
+    {
         cout << "REGISTRO INEXISTENTE";
         return;
     }
-    if(v->cpf < (*n)->value.cpf){
-        searchCPF(&(*n)->left,v);
+    if (v->cpf < (*n)->value.cpf)
+    {
+        searchCPF(&(*n)->left, v);
         return;
-    }if(v->cpf > (*n)->value.cpf){
-        searchCPF(&(*n)->right,v);
-    }else{
+    }
+    if (v->cpf > (*n)->value.cpf)
+    {
+        searchCPF(&(*n)->right, v);
+    }
+    else
+    {
         *v = (*n)->value;
     }
 }
 
-void printTree(pointer *n){
-    if((*n) != NULL){
+void printTree(pointer *n)
+{
+    if ((*n) != NULL)
+    {
         printTree(&(*n)->left);
         cout << "Nome: " << (*n)->value.name << endl;
         cout << "CPF: " << (*n)->value.cpf << endl;
@@ -178,7 +232,8 @@ void printTree(pointer *n){
     }
 }
 
-void printElement(element value){
+void printElement(element value)
+{
     cout << "Nome: " << value.name << endl;
     cout << "CPF: " << value.cpf << endl;
     cout << "Cargo: " << value.role << endl;
