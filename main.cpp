@@ -1,10 +1,11 @@
 #include <iostream>
 #include <windows.h>
 #include "funcoesarvore.hpp"
- 
+
 using namespace std;
 
-void menu(){
+void menu()
+{
     cout << "___________________________" << endl;
     cout << "|      MENU PRINCIPAL     |" << endl;
     cout << "|1. Cadastrar Funcionário |" << endl;
@@ -15,7 +16,8 @@ void menu(){
     cout << "___________________________" << endl;
 }
 
-void search(){
+void search()
+{
     cout << "___________________________" << endl;
     cout << "|         BUSCA           |" << endl;
     cout << "|1. Busca por CPF         |" << endl;
@@ -23,62 +25,74 @@ void search(){
     cout << "___________________________" << endl;
 }
 
-void print(){
+void print()
+{
     cout << "____________________________" << endl;
     cout << "|         IMPRIMIR         |" << endl;
     cout << "|1. Impressão por CPF      |" << endl;
     cout << "|2. Impressão por nome     |" << endl;
     cout << "____________________________" << endl;
 }
- 
-int main() {
-    int choice = 0,size = 0;
+
+int main()
+{
+    UINT CPAGE_UTF8 = 65001;
+    SetConsoleOutputCP(CPAGE_UTF8);
+
+    int choice = 0, size = 0;
     pointer cpfTree = NULL;
     pointer nameTree = NULL;
     element aux;
-    while (choice != 5){
+
+    while (choice != 5)
+    {
         choice = 0;
+
         system("cls");
         menu();
-        cout << "Digite o que deseja fazer: " << endl;
+
+        cout << "\nOpção desejada: ";
         cin >> choice;
+
         switch (choice)
         {
         case 1:
             system("cls");
             size++;
             aux.value = size;
-            cout << "Digite o nome do Funcionário: ";
+
+            cout << "Digite o nome do funcionário: ";
             cin >> aux.name;
-            cout << "Digite o CPF do Funcionário: ";
+            cout << "Digite o CPF do funcionário: ";
             cin >> aux.cpf;
-            cout << "Digite o cargo do Funcionário: ";
+            cout << "Digite o cargo do funcionário: ";
             cin >> aux.role;
-            cout << "Digite o número de telefone do Funcionário: ";
+            cout << "Digite o número de telefone do funcionário: ";
             cin >> aux.phonenumber;
-            cout << "Digite a Rua do Funcionário: ";
+            cout << "Digite a rua do funcionário: ";
             cin >> aux.address.street;
-            cout << "Digite o número do Funcionário: ";
+            cout << "Digite o número da casa: ";
             cin >> aux.address.number;
-            cout << "Digite o logradouro do Funcionário: ";
+            cout << "Digite o logradouro do funcionário: ";
             cin >> aux.address.complement;
-            cout << "Digite o bairro do Funcionário: ";
+            cout << "Digite o bairro do funcionário: ";
             cin >> aux.address.district;
-            cout << "Digite a cidade do Funcionário: ";
+            cout << "Digite a cidade do funcionário: ";
             cin >> aux.address.city;
-            cout << "Digite o estado do Funcionário: ";
+            cout << "Digite o estado do funcionário: ";
             cin >> aux.address.state;
-            cout << "Digite o CEP do Funcionário: ";
+            cout << "Digite o CEP do funcionário: ";
             cin >> aux.address.cep;
             cout << "Digite o dia de nascimento do funcionário: ";
             cin >> aux.birth_date.day;
             cout << "Digite o mês de nascimento do funcionário: ";
             cin >> aux.birth_date.month;
-            cout << "Digite o ano de naxcimento do funcionário: ";
+            cout << "Digite o ano de nascimento do funcionário: ";
             cin >> aux.birth_date.year;
-            includeNodeCPF(&cpfTree,aux);
-            includeNodeName(&nameTree,aux);
+            includeNodeCPF(&cpfTree, aux);
+            includeNodeName(&nameTree, aux);
             break;
+
         case 2:
             system("cls");
             int schoice;
@@ -90,7 +104,7 @@ int main() {
                 system("cls");
                 cout << "Digite o cpf que deseja buscar: " << endl;
                 cin >> aux.cpf;
-                searchCPF(&cpfTree,&aux);
+                searchCPF(&cpfTree, &aux);
                 printElement(aux);
                 system("pause");
                 break;
@@ -98,7 +112,7 @@ int main() {
                 system("cls");
                 cout << "Digite o nome que deseja buscar: " << endl;
                 cin >> aux.name;
-                searchName(&nameTree,&aux);
+                searchName(&nameTree, &aux);
                 printElement(aux);
                 system("pause");
                 break;
@@ -106,15 +120,17 @@ int main() {
                 break;
             }
             break;
+
         case 3:
             system("cls");
             cout << "Digite o CPF que deseja remover: " << endl;
             cin >> aux.cpf;
             cout << "Digite o nome que deseja remover: " << endl;
             cin >> aux.name;
-            removeNodeCPF(&cpfTree,aux);
-            removeNodeName(&nameTree,aux);
+            removeNodeCPF(&cpfTree, aux);
+            removeNodeName(&nameTree, aux);
             break;
+
         case 4:
             system("cls");
             int pchoice;
@@ -137,13 +153,18 @@ int main() {
                 break;
             }
             break;
+
         default:
             char lchoice;
-            cout << "Deseja sair da aplicação(s/n)? " << endl;
+            system("cls");
+            cout << "Deseja sair da aplicação (s/n)? " << endl;
             cin >> lchoice;
-            if(lchoice == 's'){
+            if (lchoice == 's')
+            {
                 choice = 5;
-            }else{
+            }
+            else
+            {
                 choice = 0;
             }
             break;
