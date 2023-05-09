@@ -3,6 +3,8 @@
 
 #include "funcoesarvore.cpp"
 
+//Header das funções de manipulação da arvore
+
 typedef struct date;
 typedef struct address;
 typedef struct element;

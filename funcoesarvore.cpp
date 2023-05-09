@@ -2,6 +2,7 @@
 
 using namespace std;
 
+//Estrutura de dados, feitas baseadas nas sugeridas pelo professor
 typedef struct date
 {
     int day, month, year;
@@ -21,6 +22,7 @@ typedef struct element
     address address;
 } element;
 
+//Tipo de dado citado nos slides disponibilizados pelo professores
 typedef struct node *pointer;
 typedef struct node
 {
@@ -29,6 +31,7 @@ typedef struct node
     pointer right;
 } node;
 
+//Função de inclusão, exatamente iguais, tirando pelo o que será comparado
 void includeNodeName(pointer *n, element value)
 {
     if (*n == NULL)
@@ -83,6 +86,7 @@ void includeNodeCPF(pointer *n, element value)
     }
 }
 
+//Função predecessor inalterada, exatamente como feita nos slides disponibilizados pelo professor
 void predecessor(pointer q, pointer *n)
 {
     if ((*n)->right != NULL)
@@ -97,6 +101,7 @@ void predecessor(pointer q, pointer *n)
     delete q;
 }
 
+//Função de remoção e procura também possuem uma "bifurcação" entre nome e cpf
 void removeNodeName(pointer *n, element value)
 {
     pointer aux = new node;
@@ -211,6 +216,7 @@ void searchCPF(pointer *n, element *v)
     }
 }
 
+//Funções de impressão da arvore e de um elemento especifico
 void printTree(pointer *n)
 {
     if ((*n) != NULL)

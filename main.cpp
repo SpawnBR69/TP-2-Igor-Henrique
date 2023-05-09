@@ -4,6 +4,7 @@
 
 using namespace std;
 
+//Menus feitos em forma de função pra fins de comodidade
 void menu()
 {
     cout << "___________________________" << endl;
@@ -44,6 +45,7 @@ int main()
     pointer nameTree = NULL;
     element aux;
 
+    //Inicio do laço de repetição que mantém o usuário no menu até o momento desejado
     while (choice != 5)
     {
         choice = 0;
@@ -56,6 +58,7 @@ int main()
 
         switch (choice)
         {
+        //Caso escolha cadastro
         case 1:
             system("cls");
             size++;
@@ -93,6 +96,7 @@ int main()
             includeNodeName(&nameTree, aux);
             break;
 
+        //Caso escolha busca
         case 2:
             system("cls");
             int schoice;
@@ -121,6 +125,7 @@ int main()
             }
             break;
 
+        //Caso escolha remoção
         case 3:
             system("cls");
             cout << "Digite o CPF que deseja remover: " << endl;
@@ -131,6 +136,7 @@ int main()
             removeNodeName(&nameTree, aux);
             break;
 
+        //Caso escolha impressão
         case 4:
             system("cls");
             int pchoice;
@@ -155,6 +161,8 @@ int main()
             break;
 
         default:
+            //Caso decida sair do programa ou tenha feito uma escolha que não estivesse prevista
+            //no menu
             char lchoice;
             system("cls");
             cout << "Deseja sair da aplicação (s/n)? " << endl;
